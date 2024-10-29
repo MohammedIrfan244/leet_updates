@@ -1,11 +1,13 @@
-let arr=[1,2,2,2,2,1,1,1,1,3,5,5,5,5]
+let arr=[-1,0]
 
 function single(arr=[]){
+   let result=[]
    for (let i=0;i<arr.length;i++){
       if(arr.indexOf(arr[i])==arr.lastIndexOf(arr[i])){
-         return arr[i]
+         result.push(arr[i])
       }
    }
+   return result
 }
 
 console.log(single(arr));
