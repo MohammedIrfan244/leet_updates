@@ -1,9 +1,11 @@
-var finalPositionOfSnake = function(n, commands) {
-    let result=0
-    for(let item of commands){
-        item=="RIGHT"?result++:item=="LEFT"?result--:item=="UP"?result-=n:result+=n
-    }
-    return result
-};
+let arr=[1,2,2,2,2,1,1,1,1,3,5,5,5,5]
 
-console.log(finalPositionOfSnake(3,["DOWN","RIGHT","UP"]));
+function single(arr=[]){
+   for (let i=0;i<arr.length;i++){
+      if(arr.indexOf(arr[i])==arr.lastIndexOf(arr[i])){
+         return arr[i]
+      }
+   }
+}
+
+console.log(single(arr));
