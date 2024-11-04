@@ -1,9 +1,11 @@
-var isIsomorphic = function(s="", t="") {
-    let sArr=s.split("")
-    let tArr=t.split("")
-   let sStr= sArr.map((item,_,arr)=>arr.lastIndexOf(item)).join("")
-   let tStr= tArr.map((item,_,arr)=>arr.lastIndexOf(item)).join("")
-   return sStr==tStr
+var searchInsert = function(nums=[], target=0) {
+    if(nums.includes(target)){
+        return nums.indexOf(target)
+    }else{
+        nums.push(target)
+        nums.sort((a,b)=>a-b)
+        return nums.indexOf(target)
+    }
 };
 
-console.log(isIsomorphic("abcdefghijklmnopqrstuvwxyzva","abcdefghijklmnopqrstuvwxyzck"));
+console.log(searchInsert([1,3,5,6],7))
