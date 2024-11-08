@@ -1,5 +1,5 @@
-var sortBy = function(arr=[], fn) {
-    return arr.sort((a,b)=>fn(a)-fn(b))
+var sortArrayByParity = function(nums=[]) {
+    return nums.filter(i=>i%2==0).concat(nums.filter(i=>i%2!==0))
 };
 
-console.log(sortBy([5, 4, 1, 2, 3], fn = (x) => x))
+console.log(sortArrayByParity([0]))
