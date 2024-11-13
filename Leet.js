@@ -1,14 +1,9 @@
-
-var removeDuplicates=function (s){
-   let stack=[]
-   for (let i=0;i<s.length;i++){
-      if(stack.length!==0 && stack[stack.length-1]==s[i]){
-         stack.pop()
-      }else{
-         stack.push(s[i])
-      }
+var isPowerOfTwo = function(n) {
+   if(n<=0){
+      return false
    }
-   return stack.join("")
-}
+   let logVal=Math.log2(n)
+   return logVal==Math.floor(logVal)
+};
 
-console.log(removeDuplicates("abbaca"))
+console.log(isPowerOfTwo(5))
