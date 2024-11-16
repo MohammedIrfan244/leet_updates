@@ -1,15 +1,38 @@
-var intersect = function(nums1=[], nums2=[]) {
-   let shortArray=nums1.length<=nums2.length?nums1:nums2
-   let longArray=nums2.length>=nums1.length?nums2:nums1
-   let result=[]
-   for(let i=0;i<shortArray.length;i++){
-      if(longArray.includes(shortArray[i])){
-         result.push(shortArray[i])
-         longArray.splice(longArray.indexOf(shortArray[i]),1)
+var resultsArray = function (nums, k) {
+  let res = [];
+  let test = [];
+  let flag = true;
+  if (nums.length == 1) {
+    return nums;
+  }
+  if (nums.length <= k) {
+    return [Math.max(...nums)];
+  }
+  for (let i = 0; i < nums.length - (k - 1); i++) {
+    test = [];
+    for (let j = i; j < i + k; j++) {
+      test.push(nums[j]);
+    }
+    let uniq = [...new Set(test)];
+    if (uniq.length !== test.length) {
+      res.push(-1);
+    } else {
+      flag = true;
+      for (let x = 0; x < uniq.length; x++) {
+        if (x != uniq.length - 1) {
+          if (test[x + 1] - test[x] !== 1) {
+            flag = false;
+            break;
+          }
+        }
+        if (uniq[x] !== test[x]) {
+          flag = false;
+          break;
+        }
       }
-   }
-   return result
+      flag ? res.push(Math.max(...test)) : res.push(-1);
+    }
+  }
+  return res;
 };
-
-
-console.log(intersect([4,9,5],[9,4,9,8,4]))
+console.log(resultsArray([1], 1));
