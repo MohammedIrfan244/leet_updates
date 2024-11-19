@@ -1,38 +1,19 @@
-var resultsArray = function (nums, k) {
-  let res = [];
-  let test = [];
-  let flag = true;
-  if (nums.length == 1) {
-    return nums;
+var maximumSubarraySum = function (nums = [], k = 0) {
+  if (nums.length < k || k == 0) {
+    return 0
   }
-  if (nums.length <= k) {
-    return [Math.max(...nums)];
-  }
-  for (let i = 0; i < nums.length - (k - 1); i++) {
-    test = [];
-    for (let j = i; j < i + k; j++) {
-      test.push(nums[j]);
-    }
-    let uniq = [...new Set(test)];
-    if (uniq.length !== test.length) {
-      res.push(-1);
-    } else {
-      flag = true;
-      for (let x = 0; x < uniq.length; x++) {
-        if (x != uniq.length - 1) {
-          if (test[x + 1] - test[x] !== 1) {
-            flag = false;
-            break;
-          }
-        }
-        if (uniq[x] !== test[x]) {
-          flag = false;
-          break;
-        }
-      }
-      flag ? res.push(Math.max(...test)) : res.push(-1);
+
+  let check = []
+  for (let i = 0; i <= nums.length - k; i++) {
+    const subarray = nums.slice(i, i + k)
+    if (subarray.length === new Set(subarray).size) {
+      check.push(subarray.reduce((acc, cur) => acc + cur, 0))
     }
   }
-  return res;
+  if (check.length === 0) {
+    return 0
+  }
+  return Math.max(...check)
 };
-console.log(resultsArray([1], 1));
+
+console.log(maximumSubarraySum([1, 1, 1, 7, 8, 9], 3))
