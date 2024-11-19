@@ -1,19 +1,21 @@
-var maximumSubarraySum = function (nums = [], k = 0) {
-  if (nums.length < k || k == 0) {
-    return 0
-  }
-
-  let check = []
-  for (let i = 0; i <= nums.length - k; i++) {
-    const subarray = nums.slice(i, i + k)
-    if (subarray.length === new Set(subarray).size) {
-      check.push(subarray.reduce((acc, cur) => acc + cur, 0))
+var findMaxK = function (nums = []) {
+  nums.sort((a, b) => a - b);
+  let max = -Infinity;
+  let left = 0;
+  right = nums.length - 1;
+  while (left < right) {
+    let sum = nums[left] + nums[right];
+    if (sum == 0) {
+      max = Math.max(max, nums[right]);
+      left++;
+      right--;
+    } else if (sum < 0) {
+      left++;
+    } else {
+      right--;
     }
   }
-  if (check.length === 0) {
-    return 0
-  }
-  return Math.max(...check)
+  return max==-Infinity?-1:max;
 };
 
-console.log(maximumSubarraySum([1, 1, 1, 7, 8, 9], 3))
+console.log(findMaxK([-10,8,6,7,-2,-3]));
