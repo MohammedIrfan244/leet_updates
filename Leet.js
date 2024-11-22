@@ -1,21 +1,17 @@
-var findMaxK = function (nums = []) {
-  nums.sort((a, b) => a - b);
-  let max = -Infinity;
-  let left = 0;
-  right = nums.length - 1;
-  while (left < right) {
-    let sum = nums[left] + nums[right];
-    if (sum == 0) {
-      max = Math.max(max, nums[right]);
-      left++;
-      right--;
-    } else if (sum < 0) {
-      left++;
+var rearrangeArray = function (nums = []) {
+  let res = [];
+  let even = 0;
+  let odd = 1;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] > 0) {
+      res[even] = nums[i];
+      even += 2;
     } else {
-      right--;
+      res[odd] = nums[i];
+      odd += 2;
     }
   }
-  return max==-Infinity?-1:max;
+  return res;
 };
 
-console.log(findMaxK([-10,8,6,7,-2,-3]));
+console.log(rearrangeArray([-1, 1]));
