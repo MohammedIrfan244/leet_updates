@@ -1,17 +1,18 @@
-var rearrangeArray = function (nums = []) {
-  let res = [];
-  let even = 0;
-  let odd = 1;
+var removeElement = function (nums = [], val) {
+  if (!nums.includes(val)) return nums.length;
+
   for (let i = 0; i < nums.length; i++) {
-    if (nums[i] > 0) {
-      res[even] = nums[i];
-      even += 2;
-    } else {
-      res[odd] = nums[i];
-      odd += 2;
+    if (!nums.includes(val)) {
+      nums.sort((a, b) => a - b);
+      return nums.slice(0, nums.indexOf(Infinity)).length;
+    }
+    if (nums[i] !== val) continue;
+    if (nums[i] == val) {
+      nums[i] = Infinity;
     }
   }
-  return res;
+  nums.sort((a, b) => a - b);
+  return nums.slice(0, nums.indexOf(Infinity)).length;
 };
 
-console.log(rearrangeArray([-1, 1]));
+console.log(removeElement([4, 5], 4));
