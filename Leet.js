@@ -1,10 +1,11 @@
-var debounce = function(fn, t) {
-  let timeOut
-  return function(...args){
-    const context=this
-    clearTimeout(timeOut)
-    timeOut=setTimeout(()=>{
-      fn.apply(context,args)
-    },t)
-  }
-}
+var isPrefixOfWord = function(sentence="", searchWord="") {
+    const wordArr=sentence.split(" ")
+    for(let i=0;i<wordArr.length;i++){
+        if(wordArr[i].startsWith(searchWord)){
+            return i+1
+        }
+    }
+    return -1
+};
+
+console.log(isPrefixOfWord("i love eating burger","burg"))
