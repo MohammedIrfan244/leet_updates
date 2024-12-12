@@ -1,9 +1,11 @@
-var pickGifts = function(gifts=[], k=0) {
-    for(let i=0;i<k;i++){
-        const max=Math.max(...gifts)
-        gifts[gifts.indexOf(max)]=Math.floor(Math.sqrt(max))
+var checkIfExist = function(arr=[]) {
+    const doubles=arr.map(i=>Math.floor(i*2))
+    for(let i=0;i<arr.length;i++){
+        if(doubles.includes(arr[i])&&i!==doubles.indexOf(arr[i])){
+            return true
+        }
     }
-    return gifts.reduce((a,c)=>a+c,0)
+    return false
 };
 
-console.log(pickGifts([1,1,1,1],4))
+console.log(checkIfExist([3,1,7,11]))
