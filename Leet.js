@@ -1,17 +1,9 @@
-var majorityElement = function(nums=[]) {
-    
-    for (let i=0;i<nums.length;i++){
-        let occ=0
-        for(let k=0;k<nums.length;k++){
-            if(nums[i]==nums[k]){
-                occ+=1
-            }   
-            if(occ>=nums.length/2){
-            return nums[i]
-           }
-        }
-        
+var pickGifts = function(gifts=[], k=0) {
+    for(let i=0;i<k;i++){
+        const max=Math.max(...gifts)
+        gifts[gifts.indexOf(max)]=Math.floor(Math.sqrt(max))
     }
+    return gifts.reduce((a,c)=>a+c,0)
 };
 
-console.log(majorityElement([2,2,1,1,1,2,2]))
+console.log(pickGifts([1,1,1,1],4))
