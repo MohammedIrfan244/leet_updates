@@ -1,11 +1,16 @@
-var checkIfExist = function(arr=[]) {
-    const doubles=arr.map(i=>Math.floor(i*2))
-    for(let i=0;i<arr.length;i++){
-        if(doubles.includes(arr[i])&&i!==doubles.indexOf(arr[i])){
-            return true
-        }
+var mergeAlternately = function(word1="", word2="") {
+    let small=Math.min(word1.length,word2.length)
+    let word=""
+    for(let i=0;i<small;i++){
+        word+=word1[i]
+        word+=word2[i]
     }
-    return false
+if(word1.length!==word2.length){
+    let big=word1.length>word2.length?word1:word2
+    let tail=big.slice(small)
+    word+=tail
+}
+    return word
 };
 
-console.log(checkIfExist([3,1,7,11]))
+console.log(mergeAlternately("abc","pqrjk"))
