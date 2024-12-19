@@ -1,16 +1,10 @@
-var mergeAlternately = function(word1="", word2="") {
-    let small=Math.min(word1.length,word2.length)
-    let word=""
-    for(let i=0;i<small;i++){
-        word+=word1[i]
-        word+=word2[i]
-    }
-if(word1.length!==word2.length){
-    let big=word1.length>word2.length?word1:word2
-    let tail=big.slice(small)
-    word+=tail
-}
-    return word
+var countDistinctIntegers = function (nums = []) {
+  const unique = new Set(nums);
+  for (let i = 0; i < nums.length; i++) {
+    const reversed = Number(String(nums[i]).split("").reverse().join(""));
+    unique.add(reversed);
+  }
+  return unique.size;
 };
 
-console.log(mergeAlternately("abc","pqrjk"))
+console.log(countDistinctIntegers([1, 13, 10, 12, 31]));
