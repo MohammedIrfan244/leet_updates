@@ -1,10 +1,17 @@
-var countDistinctIntegers = function (nums = []) {
-  const unique = new Set(nums);
-  for (let i = 0; i < nums.length; i++) {
-    const reversed = Number(String(nums[i]).split("").reverse().join(""));
-    unique.add(reversed);
-  }
-  return unique.size;
+var findTargetSumWays = function(nums=[], target=0) {
+    nums.sort((a,b)=>b-a)
+    let sum=nums[0]
+    let cct=`+${nums[0]}`
+    for(let i=1;i<nums.length;i++){
+      if(sum>target){
+        sum-=nums[i]
+        cct+=`-${nums[i]}`
+      }else{
+        sum+=nums[i]
+        cct+=`+${nums[i]}`
+      }
+    }
+    return cct
 };
 
-console.log(countDistinctIntegers([1, 13, 10, 12, 31]));
+console.log(findTargetSumWays([1],1))
