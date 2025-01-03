@@ -1,17 +1,12 @@
-var findTargetSumWays = function(nums=[], target=0) {
-    nums.sort((a,b)=>b-a)
-    let sum=nums[0]
-    let cct=`+${nums[0]}`
-    for(let i=1;i<nums.length;i++){
-      if(sum>target){
-        sum-=nums[i]
-        cct+=`-${nums[i]}`
-      }else{
-        sum+=nums[i]
-        cct+=`+${nums[i]}`
+var heightChecker = function(heights) {
+  const sorted=heights.toSorted((a,b)=>a-b)
+  let result=0
+  for(let i=0;i<sorted.length;i++){
+      if(heights[i]!==sorted[i]){
+          result+=1
       }
-    }
-    return cct
+  }
+  return result
 };
 
-console.log(findTargetSumWays([1],1))
+console.log(heightChecker([5,1,2,3,4]))
