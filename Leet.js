@@ -1,12 +1,22 @@
-var heightChecker = function(heights) {
-  const sorted=heights.toSorted((a,b)=>a-b)
-  let result=0
-  for(let i=0;i<sorted.length;i++){
-      if(heights[i]!==sorted[i]){
-          result+=1
-      }
+var uniquePaths = function(m, n) {
+  const mat = []
+
+    for(let i = 1; i <= m; i++){
+    mat.push([1])
   }
-  return result
+
+  for(let i = 1; i < n; i++){
+    mat[0].push(1)
+  }
+
+  for(let i = 1; i < m; i++){
+    for(let j = 1; j < n; j++){
+      mat[i][j] = mat[i-1][j] + mat[i][j-1]
+    }
+  }
+
+  return mat[m-1][n-1]
+
 };
 
-console.log(heightChecker([5,1,2,3,4]))
+console.log(uniquePaths(5,8))
