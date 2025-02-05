@@ -1,6 +1,5 @@
-var cancellable = function(fn, args, t) {
-    const timedFun=setTimeout(()=>{
-        fn(...args)
-    },t)
-    return ()=>{clearTimeout(timedFun)}
-}
+var isAnagram = function(s, t) {
+    return s.split("").sort().join()==t.split("").sort().join()
+};
+
+console.log(isAnagram("rat","car"))
